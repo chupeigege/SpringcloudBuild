@@ -1,0 +1,21 @@
+eureka:
+  client:
+    serviceUrl:
+      #      eureka的注册中心地址
+      defaultZone: http://localhost:8888/eureka/
+server:
+  #  此项目端口号
+  port: 3000
+spring:
+  application:
+    #    注册进eureka的名字
+    name: service-member
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:9999
+#  打开 Sentinel 对 Feign 的支持
+feign:
+  sentinel:
+    enabled: true
