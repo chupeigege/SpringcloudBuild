@@ -35,6 +35,19 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * 定义后，同样可在界面配置熔断降级
  *
  * 可在网关层配置（网关流控）：好处，不用请求微服务就被拦截，更快响应
+ *
+ *
+ * JMeter：
+ * 1.百度JMeter下载zip，解压运行bin目录下的jmeter.bat
+ * 2.添加线程组-》Http请求-》结果树、汇总、聚集报告等，填好地址，线程数，发起请求
+ *
+ * jvisualvm
+ * 1.用cmd输入jvisualvm
+ * 2.连接某个服务，即可
+ * 注意：安装插件出错，需要重新指定下载的库，具体百度
+ *
+ * 影响性能：硬件配置、jvm配置（调整堆栈大小）、代码逻辑、sql语句（sql优化）等。
+ *
  */
 @EnableFeignClients
 @EnableEurekaClient
