@@ -48,6 +48,23 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  *
  * 影响性能：硬件配置、jvm配置（调整堆栈大小）、代码逻辑、sql语句（sql优化）等。
  *
+ * redisson：
+ * 1.导入依赖
+ * <!-- https://mvnrepository.com/artifact/org.redisson/redisson -->
+ * <dependency>
+ *     <groupId>org.redisson</groupId>
+ *     <artifactId>redisson</artifactId>
+ *     <version>3.12.5</version>
+ * </dependency>
+ *
+ * 2.配置RedissonClient
+ * 3.注入即可使用，功能类似JUC
+ *
+ * 缓存数据一致性解决方案：
+ * 双写模式（更新db，更新缓存）   失效模式（更新db，删除缓存）， 高并发可能会出现问题，导致缓存数据不一致
+ * 1.给缓存定时删除，保证下次读刷新缓存（最终一致性）
+ * 2.读写数据的时候，加上分布式读写锁（性能会有所影响）
+ *
  */
 @EnableFeignClients
 @EnableEurekaClient
