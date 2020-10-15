@@ -15,6 +15,25 @@ spring:
       transport:
         port: 8719
         dashboard: localhost:9999
+  cache:
+    type: redis
+    redis:
+#      设置缓存过期时间为1个小时
+      time-to-live: 3600000
+#      key的前缀，建议：默认以分区名作为前缀
+#      key-prefix: CACHE_
+#      缓存null值，可防御缓存穿透，默认true
+#      cache-null-values: true
+  redis:
+    host: localhost
+    port: 6379
+#    pool:
+#      # 最大活跃链接数 默认8
+#      max-active: 8
+#      # 最大空闲连接数 默认8
+#      max-idle: 8
+#      # 最小空闲连接数 默认0
+#      min-idle: 0
 #  打开 Sentinel 对 Feign 的支持
 feign:
   sentinel:

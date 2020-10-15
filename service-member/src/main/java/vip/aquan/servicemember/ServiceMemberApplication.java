@@ -2,6 +2,7 @@ package vip.aquan.servicemember;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
@@ -65,7 +66,23 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * 1.给缓存定时删除，保证下次读刷新缓存（最终一致性）
  * 2.读写数据的时候，加上分布式读写锁（性能会有所影响）
  *
+ * SpringCache
+ * 1.加依赖
+ * <dependency>
+ *      <groupId>org.springframework.boot</groupId>
+ *      <artifactId>spring-boot-starter-cache</artifactId>
+ * </dependency>
+ *         <!-- redis -->
+ *         <dependency>
+ *             <groupId>org.springframework.boot</groupId>
+ *             <artifactId>spring-boot-starter-data-redis</artifactId>
+ *         </dependency>
+ * 2.在application.yml配置spring.cache.type=redis
+ * 3.启用缓存功能@EnableCaching
+ * 4.在需要缓存的方法上标@Cacheable
+ * 5.可自定义配置缓存过期时间，key，数据保存为json格式等
  */
+@EnableCaching
 @EnableFeignClients
 @EnableEurekaClient
 @SpringBootApplication
